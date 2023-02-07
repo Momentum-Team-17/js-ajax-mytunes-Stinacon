@@ -1,0 +1,19 @@
+* {
+    border: 2px solid palevioletred;
+}
+
+body {
+    background-color:coral;
+}
+
+#resultsContainer {
+    display: flex;
+    
+}
+
+.result-box {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 24%;
+    margin: 10px; 
+}
