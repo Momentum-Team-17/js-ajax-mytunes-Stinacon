@@ -2,7 +2,7 @@ const form = document.querySelector('#search-form');
 
 const baseUrl = 'https://proxy-itunes-api.glitch.me/search?term=';
 const resultsContainer = document.querySelector('#resultsContainer');
-
+let player = document.querySelector('#autoplay');
 
 form.addEventListener('submit', function (event) {
   // console.log(event.target);
@@ -34,6 +34,11 @@ console.log(searchTerm);
   // when you have data from the above promise, console log it
   console.log("second .then executed");
   console.log("Here is what we got back from the API", data.results);
+  //adding event listener to clear the search results
+while (resultsContainer.firstChild) {
+  resultsContainer.removeChild(resultsContainer.firstChild);
+}
+  
   buildResultsHtml(data.results);
 
 
@@ -53,18 +58,25 @@ artistNameDiv.innerText = result.artistName;
 resultDiv.appendChild(artistNameDiv);
 
 
-let trackNameDiv = document.createElement("h3");
+let trackNameDiv = document.createElement("h4");
 trackNameDiv.classList.add("track-name");
 trackNameDiv.innerText = result.trackName;
 resultDiv.appendChild(trackNameDiv);
 
 let albumNameDiv = document.createElement("h4");
-
+albumNameDiv.classList.add("album-name");
+albumNameDiv.innerText = result.collectionName;
+resultDiv.appendChild(albumNameDiv);
 
 let albumArtDiv = document.createElement("img");
 albumArtDiv.classList.add("album-art");
 albumArtDiv.src = result.artworkUrl100;
 resultDiv.appendChild(albumArtDiv);
+
+albumArtDiv.addEventListener('click', function (event) {
+  let playSrc = `${result.previewUrl}`;
+  player.src = playSrc;
+})
 
 }
 } 
