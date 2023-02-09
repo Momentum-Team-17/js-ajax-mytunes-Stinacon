@@ -51,27 +51,25 @@ function buildResultsHtml(resultsArray) {
     resultDiv.classList.add("result-box");
     resultsContainer.appendChild(resultDiv);
 
-
-let artistNameDiv = document.createElement("h4");
-artistNameDiv.classList.add("artist-name");
-artistNameDiv.innerText = result.artistName;
-resultDiv.appendChild(artistNameDiv);
-
-
-let trackNameDiv = document.createElement("h4");
-trackNameDiv.classList.add("track-name");
-trackNameDiv.innerText = result.trackName;
-resultDiv.appendChild(trackNameDiv);
-
-let albumNameDiv = document.createElement("h4");
-albumNameDiv.classList.add("album-name");
-albumNameDiv.innerText = result.collectionName;
-resultDiv.appendChild(albumNameDiv);
-
 let albumArtDiv = document.createElement("img");
 albumArtDiv.classList.add("album-art");
 albumArtDiv.src = result.artworkUrl100;
 resultDiv.appendChild(albumArtDiv);
+
+let artistNameDiv = document.createElement("p");
+artistNameDiv.classList.add("artist-name");
+artistNameDiv.innerText = result.artistName;
+resultDiv.appendChild(artistNameDiv);
+
+let trackNameDiv = document.createElement("p");
+trackNameDiv.classList.add("track-name");
+trackNameDiv.innerText = result.trackName;
+resultDiv.appendChild(trackNameDiv);
+
+// let albumNameDiv = document.createElement("p");
+// albumNameDiv.classList.add("album-name");
+// albumNameDiv.innerText = result.collectionName;
+// resultDiv.appendChild(albumNameDiv);
 
 albumArtDiv.addEventListener('click', function (event) {
   let playSrc = `${result.previewUrl}`;
